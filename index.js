@@ -289,23 +289,9 @@ function createReceipt(fromaddr,password,bankAddress,amountToPay){
 
 app.use(express.static('.'));
 
-// Give Hospital info.
-app.get('/API/hospital', function(req, res) {
-    var info=getHospital(req.query.addr);
-    res.setHeader('Content-Type', 'application/json');
-    res.send(JSON.stringify(info));
-});
-
 // Buys insurance for patient.
 app.post('/API/buyInsurance', function(req, res) {
     buyInsurance(req.body.addr,req.body.pw);
-    res.setHeader('Content-Type', 'application/json');
-    res.send(JSON.stringify("it will be done at next block."));
-});
-
-// For hospital to create receipt.
-app.post('/API/createReceipt', function(req, res) {
-    createReceipt(req.body.addr,req.body.pw,req.body.patientAddress,parseInt(req.body.amountToPay,10),parseInt(req.body.auditorsPayment,10));
     res.setHeader('Content-Type', 'application/json');
     res.send(JSON.stringify("it will be done at next block."));
 });
